@@ -1,0 +1,12 @@
+[Module 1: Core Fundamentals] ➔ [Module 2: App Specs & Probes] ➔ [Module 3: Configurations & Storage]
+                                                                            │
+[Module 6: Interview Troubleshooting] ◄─ [Module 5: Ingress & HPA] ◄───────┘
+
+
+What You Will Build & Practice 
+1.Core Workloads[Writing Namespaces, Deployments, Replicas, and ClusterIP Services]
+2.Pod Lifecycle & HealthResource Limits/Requests, Readiness & Liveness Probes, Rolling Updates.
+3.Config & PersistenceConfigMaps, Secrets, PVs, and PVCs.
+4.Networking & IngressNGINX Ingress Controller setup, Path-based routing, TLS termination.
+5.Autoscaling & MetricsMetrics Server setup and Horizontal Pod Autoscaling (HPA).
+6.Troubleshooting & CI/CDDebugging scenarios (CrashLoopBackOff, ImagePullBackOff), GitHub Actions pipeline.
