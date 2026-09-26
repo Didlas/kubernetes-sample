@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment 
+Metadata:
+  name: webapp-backend
+  namespace: dev-new
+  labels:
+    app.kubernetes.io/name: webapp-backend
+    app.kubernetes.io/part-of: ecommerce
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-backend
+  template:
+    metadata:
+      labels:
+        app: webapp-backend
+        
+    spec:
+      containers:
+        - name: webapp-backend
+          image: nginx:1.25-alpine
+          ports:
+            - containerPort: 80
