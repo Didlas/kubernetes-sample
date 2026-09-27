@@ -1,1 +1,49 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-backend
+  namespace: dev-new
+  labels:
+    app.kubernetes.io/name: webapp-backend
+    app.kubernetes.io/part-of: ecommerce
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # Max pods created above desired count during update
+      maxUnavailable: 0  # Guarantees zero downtime by ensuring 100% capacity stays up
+  selector:
+    matchLabels:
+      app: webapp-backend
+  template:
+    metadata:
+      labels:
+        app: webapp-backend
+    spec:
+      containers:
+        - name: webapp-backend
+          image: nginx:1.25-alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"      # 0.1 CPU core reserved on the node
+              memory: "64Mi"   # 64 MB RAM reserved
+            limits:
+              cpu: "250m"      # Throttled if CPU exceeds 0.25 core
+              memory: "128Mi"  # Pod is terminated (OOMKilled) if RAM exceeds 128 MB
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5  # Wait 5s after container starts before checking
+            periodSeconds: 5        # Check every 5s
+            failureThreshold: 3     # Remove pod from Service endpoints after 3 failures
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15 # Allow initial setup time before checking liveness
+            periodSeconds: 10       # Check every 10s
+            failureThreshold: 3
