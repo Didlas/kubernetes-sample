@@ -10,3 +10,19 @@ What You Will Build & Practice
 4.Networking & IngressNGINX Ingress Controller setup, Path-based routing, TLS termination.
 5.Autoscaling & MetricsMetrics Server setup and Horizontal Pod Autoscaling (HPA).
 6.Troubleshooting & CI/CDDebugging scenarios (CrashLoopBackOff, ImagePullBackOff), GitHub Actions pipeline.
+
+day-2 
+after creating the deployment with rolling Updates
+run the delow command to check the changes
+# Update the image version
+kubectl set image deployment/webapp-backend web-app=nginx:1.26.0-alpine -n dev-new
+
+# Watch the rollout happen step-by-step
+kubectl rollout status deployment/webapp-backend -n dev-new
+
+
+# Check deployment history
+kubectl rollout history deployment/webapp-backend -n dev-new
+
+# Undo the last deployment (Rollback to previous working state)
+kubectl rollout undo deployment/webapp-backend -n dev-new
