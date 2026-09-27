@@ -4,7 +4,7 @@ metadata:
   name: webapp-backend-svc
   namespace: dev-new
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: webapp-backend
   ports:
