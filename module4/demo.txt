@@ -7,3 +7,6 @@ k8s-interview-practice/
         ├── 01-frontend-deployment.yaml
         ├── 02-backend-deployment.yaml
         └── 03-ingress-rules.yaml
+
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
