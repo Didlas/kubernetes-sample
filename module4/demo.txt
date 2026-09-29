@@ -10,3 +10,4 @@ k8s-interview-practice/
 
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
+curl -H "Host: myapp.local" http:///

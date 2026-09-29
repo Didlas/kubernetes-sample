@@ -1,0 +1,18 @@
+k8s-interview-practice/
+└── helm/
+    └── web-app/
+        ├── Chart.yaml
+        ├── values.yaml
+        └── templates/
+            ├── _helpers.tpl
+            ├── deployment.yaml
+            ├── service.yaml
+            ├── ingress.yaml
+            └── hpa.yaml
+ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+ kubectl patch deployment metrics-server -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+ run the above command if you are using ec2 instance which free tier ec2 to avoid validation
+ Since test clusters typically use self-signed Kubelet certificates, patch the Metrics Server deployment to skip TLS validation:           
+ load test a helm deployment
+ # Run a busybox loop generating HTTP traffic load
+kubectl run load-generator --rm -i --tty --restart=Never -n dev-env --image=busybox:1.28 -- sh -c "while true; do wget -q -O- http://production-app-backend; done"
