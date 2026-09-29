@@ -1,0 +1,9 @@
+k8s-interview-practice/
+└── k8s/
+    ├── 01-core/
+    ├── 02-app-specs/
+    ├── 03-config-and-storage/
+    └── 04-ingress/
+        ├── 01-frontend-deployment.yaml
+        ├── 02-backend-deployment.yaml
+        └── 03-ingress-rules.yaml
